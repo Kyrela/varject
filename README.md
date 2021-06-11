@@ -92,3 +92,8 @@ description :
 "list
 elements" : 0 1 2 3 4 : var.split(" ") 
 ```
+
+## Links
+
+- [Github](https://github.com/Kyrela/varject)
+- [Pypi](https://pypi.org/project/varject/)
