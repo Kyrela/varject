@@ -1,5 +1,4 @@
 # Varject
-______________________________________________________________________________________________
 
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/varject)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/varject)
