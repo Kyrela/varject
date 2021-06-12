@@ -14,7 +14,7 @@ __title__ = 'Varject'
 __author__ = 'Kyrela'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2021 Kyrela'
-__version__ = '1.0'
+__version__ = '1.0.1'
 
 __all__ = ("Varject",)
 
