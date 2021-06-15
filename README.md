@@ -23,7 +23,7 @@ A simple and powerful configuration file system
 
 **Python 3.6 or above is required**
 
-### From Pipy
+### From Pypi
 
 Just run the following command in your terminal :
 
