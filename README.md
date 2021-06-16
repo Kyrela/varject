@@ -3,6 +3,8 @@
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/varject)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/varject)
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/varject)
+![PyPI](https://img.shields.io/pypi/v/varject)
+![GitHub](https://img.shields.io/github/license/kyrela/varject)
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/kyrela/varject?style=social)
 ![GitHub watchers](https://img.shields.io/github/watchers/kyrela/varject?style=social)
