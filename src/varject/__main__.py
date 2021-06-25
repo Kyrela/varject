@@ -1,4 +1,3 @@
-
 """
 The MIT License (MIT)
 Copyright (c) 2021 Kyrela
@@ -18,7 +17,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
-
 
 from copy import copy
 from .quotes_handling import *
@@ -59,8 +57,9 @@ class Varject:
                         if not clean_string(element[0][index_iq(element[0], ":", 2) + 1:], False):
                             raise ConfigSyntaxError(f"Empty type value line {element[1]}")
                         try:
-                            exec("var = \"" + clean_string(element[0][index_iq(element[0], ":") + 1:index_iq(element[0],
-                                 ":", 2)]) + "\"" + "\nvalue = " +
+                            exec("var = " +
+                                 repr(clean_string(element[0][index_iq(element[0], ":") + 1:index_iq(
+                                     element[0], ":", 2)])) + "\nvalue = " +
                                  clean_string(element[0][index_iq(element[0], ":", 2) + 1:], False), globals(), loc)
                             value = loc["value"]
                         except Exception as error:
