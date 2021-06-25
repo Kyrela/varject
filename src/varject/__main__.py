@@ -1,3 +1,4 @@
+
 """
 The MIT License (MIT)
 Copyright (c) 2021 Kyrela
@@ -58,12 +59,14 @@ class Varject:
                         if not clean_string(element[0][index_iq(element[0], ":", 2) + 1:], False):
                             raise ConfigSyntaxError(f"Empty type value line {element[1]}")
                         try:
-                            exec("var = \"" + clean_string(element[0][index_iq(element[0], ":") + 1:index_iq(element[0], ":", 2)]) +
-                                 "\"" + "\nvalue = " + clean_string(element[0][index_iq(element[0], ":", 2) + 1:], False),
-                                 globals(), loc)
+                            exec("var = \"" + clean_string(element[0][index_iq(element[0], ":") + 1:index_iq(element[0],
+                                 ":", 2)]) + "\"" + "\nvalue = " +
+                                 clean_string(element[0][index_iq(element[0], ":", 2) + 1:], False), globals(), loc)
                             value = loc["value"]
                         except Exception as error:
-                            raise ConfigSyntaxError(f"Invalid code or value type line {element[1]} : {error}") from error
+                            raise ConfigSyntaxError(
+                                f"Invalid code or value type line {element[1]} : {error} :\n" +
+                                clean_string(element[0][index_iq(element[0], ":", 2) + 1:])) from error
                 if key:
                     self.__dict__[key] = value
                 else:
