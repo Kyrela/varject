@@ -42,7 +42,7 @@ def is_only_preceded_by(string: str, to_find: str, preceded: str) -> bool:
     return True
 
 
-def format(string: str) -> str:
+def reformat(string: str) -> str:
     """
     format special characters such as \n, \\ and more.
 
@@ -86,7 +86,7 @@ def clean_string(string: str, should_hard_format=True) -> str:
         string = string[:-1]
     if should_hard_format and len(string) >= 2 and string[0] == "\"" == string[-1]:
         string = string[1:-1]
-        string = format(string)
+        string = reformat(string)
     return string
 
 

@@ -79,7 +79,7 @@ def get_lines_iq(filename: str) -> list:
         for i, char in enumerate(line):
             if char == "\"" and not is_open and is_quote(line, i, True):
                 is_open = True
-            if char == "\"" and is_open and is_quote(line, i, False):
+            elif char == "\"" and is_open and is_quote(line, i, False):
                 is_open = False
         if is_prec_open:
             lignes[len(lignes) - 1][0] += line

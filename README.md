@@ -85,9 +85,7 @@ debug         : True                 : bool
 # mode 2 : predictive
 
 #----------- detailed params -----------#
-description :
-
-"A simple program for testing. It does :\n
+description : "A simple program for testing. It does :\n
 \t- Nothing\n
 \t- And that's all."
 
