@@ -18,14 +18,14 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 """
 
-from copy import copy
+from collections import Iterable
 from .quotes_handling import *
 from .core_fnc import *
 
 __all__ = ("Varject",)
 
 
-class Varject:
+class Varject(dict):
     """
     Generate an object with all the variables stored in the specified varject file.
     Varject files are usually described using .varj, .vject or .vj
@@ -36,6 +36,7 @@ class Varject:
     def __init__(self, filename: str):
 
         self._file = filename
+        variables = {}
 
         for element in get_lines_iq(filename):
             if count_iq(element[0], ":") > 2:
@@ -67,17 +68,33 @@ class Varject:
                                 f"Invalid code or value type line {element[1]} : {error} :\n" +
                                 clean_string(element[0][index_iq(element[0], ":", 2) + 1:])) from error
                 if key:
-                    self.__dict__[key] = value
+                    variables[key] = value
                 else:
                     raise ConfigSyntaxError(f"No key given line {element[1]}")
             elif element[0]:
                 raise ConfigSyntaxError(f"No declaration line {element[1]}")
+        super().__init__(variables)
         Varject.varject_list.append(self)
 
-    def __str__(self):
-        fileless = copy(self.__dict__)
-        fileless.pop("_file")
-        return str(fileless)
-
     def __repr__(self):
-        return "<Varject " + ", ".join(f"{repr(var)}={repr(value)}" for var, value in self.__dict__.items()) + '>'
+        return f"<Varject object on file {repr(self._file)} : " + \
+               ", ".join(f"{repr(var)}={repr(value)}" for var, value in self.items()) + '>'
+
+    def __str__(self):
+        return super().__repr__()
+
+    def __getattr__(self, item):
+        if item in self:
+            return self[item]
+        raise AttributeError(str(item))
+
+    def __setattr__(self, key, value):
+        self[key] = value
+
+    def __delattr__(self, item):
+        if item in self:
+            del self[item]
+        raise AttributeError(str(item))
+
+    def __dir__(self) -> Iterable[str]:
+        return list(self.keys()) + list(super().__dir__())
